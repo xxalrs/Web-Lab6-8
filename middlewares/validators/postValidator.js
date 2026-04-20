@@ -18,7 +18,8 @@ exports.createPostRules = [
   
   body('tags')
     .optional()
-    .isArray().withMessage('tags must be an array of strings'),
+    .isArray().withMessage('tags must be an array')
+    .custom(value => value.length <= 10).withMessage('maximum 10 tags allowed'),
   
   body('tags.*')
     .optional()
