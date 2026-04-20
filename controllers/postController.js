@@ -1,4 +1,4 @@
-aconst Post = require('../models/Post');
+const Post = require('../models/Post');
 const Comment = require('../models/Comment');
 
 // CREATE
@@ -12,7 +12,7 @@ exports.createPost = async (req, res) => {
   }
 };
 
-// READ all with pagination
+// READ 
 exports.getAllPosts = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -33,7 +33,6 @@ exports.getAllPosts = async (req, res) => {
   }
 };
 
-// READ one post with comments
 exports.getPostById = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -45,7 +44,7 @@ exports.getPostById = async (req, res) => {
   }
 };
 
-// Search posts
+// Search
 exports.searchPosts = async (req, res) => {
   try {
     const { q } = req.query;
@@ -60,7 +59,7 @@ exports.searchPosts = async (req, res) => {
   }
 };
 
-// UPDATE post
+// UPDATE
 exports.updatePost = async (req, res) => {
   try {
     const { title, content, tags } = req.body;
@@ -76,7 +75,7 @@ exports.updatePost = async (req, res) => {
   }
 };
 
-// LIKE post
+// LIKE
 exports.likePost = async (req, res) => {
   try {
     const post = await Post.findByIdAndUpdate(
@@ -91,7 +90,7 @@ exports.likePost = async (req, res) => {
   }
 };
 
-// DELETE post with cascade
+// DELETE
 exports.deletePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
